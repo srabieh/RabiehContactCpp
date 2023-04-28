@@ -1,10 +1,10 @@
 # contactPy
 A MarieDB C++ microservice baced web app to save phone numbers
 
-##Running on my VM:
+## Running on my VM:
 http://34.229.136.9/contactCpp/contactApp.html
 
-##Structure:
+## Structure:
 Database — 
 - ID
 - Type
