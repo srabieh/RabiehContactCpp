@@ -16,7 +16,7 @@ Database —
 - Meal_Plan (at Peirce — basically, are they a Kenyon student/faculty or not)
 - Yakarma (also fake, also for funsies)
 
-#Setting up your own:
+# Setting up your own:
 
 ## MariaDB
   - This assumes MariaDB is installed. If not follow these instructions: https://www.digitalocean.com/community/tutorials/how-to-install-mariadb-on-ubuntu-22-04
