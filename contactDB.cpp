@@ -168,7 +168,7 @@ void contactDB::addEntry(string first,string last,string phone,string type,strin
      	 type="Other";
   	}
   	
-  	stmnt->executeQuery("INSERT INTO contacts(First,Last,Phone,Type,Email, SSN, Meal_Plan, Yakarma) VALUES ('"+first+"','"+last+"','"+phone+"','"+type+"','"+SSN+"','"+meal+"','"+yakarma+"','"+email+"')");
+  	stmnt->executeQuery("INSERT INTO contacts(First,Last,Phone,Type,Email, SSN, Meal_Plan, Yakarma) VALUES ('"+first+"','"+last+"','"+phone+"','"+type+"','"+email+"','"+SSN+"','"+meal+"','"+yakarma+"')");
 }
 
 contactEntry contactDB::fetchEntry(string id){
