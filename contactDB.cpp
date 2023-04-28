@@ -56,6 +56,8 @@ vector<contactEntry> contactDB::find(string search) {
     while (res->next()) {
     	contactEntry entry(res->getString("First"),res->getString("Last"),
 			res->getString("Phone"),res->getString("Type"),
+			res->getString("Email"),res->getString("SSN"),
+			res->getString("Meal_Plan"),res->getString("Yakarma"),
 	    	res->getString("ID"));
 	    	
 	    list.push_back(entry);
@@ -84,6 +86,8 @@ vector<contactEntry> contactDB::findByLast(string last) {
     while (res->next()) {
     	contactEntry entry(res->getString("First"),res->getString("Last"),
 			res->getString("Phone"),res->getString("Type"),
+			res->getString("Email"),res->getString("SSN"),
+			res->getString("Meal_Plan"),res->getString("Yakarma"),
 	    	res->getString("ID"));
 	    	
 	    list.push_back(entry);
@@ -112,6 +116,8 @@ vector<contactEntry> contactDB::findByFirst(string first) {
     while (res->next()) {
     	contactEntry entry(res->getString("First"),res->getString("Last"),
 			res->getString("Phone"),res->getString("Type"),
+			res->getString("Email"),res->getString("SSN"),
+			res->getString("Meal_Plan"),res->getString("Yakarma"),
 	    	res->getString("ID"));
 	    	
 	    list.push_back(entry);
@@ -138,6 +144,8 @@ vector<contactEntry> contactDB::findByType(string type) {
     while (res->next()) {
     	contactEntry entry(res->getString("First"),res->getString("Last"),
 			res->getString("Phone"),res->getString("Type"),
+			res->getString("Email"),res->getString("SSN"),
+			res->getString("Meal_Plan"),res->getString("Yakarma"),
 	    	res->getString("ID"));
 	    	
 	    list.push_back(entry);
@@ -147,7 +155,7 @@ vector<contactEntry> contactDB::findByType(string type) {
 
 }
 
-void contactDB::addEntry(string first,string last,string phone, string type){
+void contactDB::addEntry(string first,string last,string phone,string type,string email,string SSN,string meal,string yakarma){
 
 	if (!conn) {
    		cerr << "Invalid database connection" << endl;
@@ -160,7 +168,7 @@ void contactDB::addEntry(string first,string last,string phone, string type){
      	 type="Other";
   	}
   	
-  	stmnt->executeQuery("INSERT INTO contacts(First,Last,Phone,Type) VALUES ('"+first+"','"+last+"','"+phone+"','"+type+"')");
+  	stmnt->executeQuery("INSERT INTO contacts(First,Last,Phone,Type,Email, SSN, Meal_Plan, Yakarma) VALUES ('"+first+"','"+last+"','"+phone+"','"+type+"','"+SSN+"','"+meal+"','"+yakarma+"','"+email+"')");
 }
 
 contactEntry contactDB::fetchEntry(string id){
@@ -181,12 +189,14 @@ contactEntry contactDB::fetchEntry(string id){
     if (res->next()) {
     	entry = contactEntry(res->getString("First"),res->getString("Last"),
 			res->getString("Phone"),res->getString("Type"),
+			res->getString("Email"),res->getString("SSN"),
+			res->getString("Meal_Plan"),res->getString("Yakarma"),
 	    	res->getString("ID"));
     }
     return entry;
 }
 
-void contactDB::editEntry(string idnum,string first,string last,string phone, string type){
+void contactDB::editEntry(string idnum,string first,string last,string phone,string type,string email,string SSN,string meal,string yakarma){
 	if (!conn) {
    		cerr << "Invalid database connection" << endl;
    		exit (EXIT_FAILURE);
@@ -198,7 +208,7 @@ void contactDB::editEntry(string idnum,string first,string last,string phone, st
      	 type="Other";
   	}
   	
-  	stmnt->executeQuery("UPDATE contacts SET First = '"+first+"', Last ='"+last+"', Phone ='"+phone+"', Type ='"+type+"' WHERE ID='"+idnum+"'");
+  	stmnt->executeQuery("UPDATE contacts SET First = '"+first+"', Last ='"+last+"', Phone ='"+phone+"', Type ='"+type+"', Email = '"+email+"', SSN = '"+SSN+"', Meal_Plan = '"+meal+"', Yakarma = '"+yakarma+"' WHERE ID='"+idnum+"'");
   	
 }
 

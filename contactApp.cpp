@@ -95,20 +95,29 @@ int main() {
     	res.status = 200;
   	});  
   	
-  	svr.Get(R"(/contact/add/(.*)/(.*)/(.*)/(.*))", [&](const httplib::Request& req, httplib::Response& res) {
+  	svr.Get(R"(/contact/add/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/(.*))", [&](const httplib::Request& req, httplib::Response& res) {
     	res.set_header("Access-Control-Allow-Origin","*");
+    	
+    	cout<<"in .../contact/add/..."<<endl;
 
     	string first = req.matches[1];
     	string last = req.matches[2];
     	string phone = req.matches[3];
     	string type = req.matches[4];
-    	ctdb.addEntry(first,last,phone,type);
+    	string email = req.matches[5];
+    	string SSN = req.matches[6];
+    	string meal = req.matches[7];
+    	string yakarma = req.matches[8];
+    	cout<<"successfully assigned values to all 8"<<endl;
+    	ctdb.addEntry(first,last,phone,type,email,SSN,meal,yakarma);
+    	
+    	cout<<"in .../contact/add/..., values to be added are first:"<<first<<", last:"<<last<<", phone: "<<phone<<", type:"<<type<<", email:"<<email<<", SSN:"<<SSN<<", meal:"<<meal<<", yak:"<<yakarma<<endl;
 
     	res.set_content("{\"status\":\"success\"}", "text/json");
     	res.status = 200;
   	}); 	
  
-   	svr.Get(R"(/contact/update/(.*)/(.*)/(.*)/(.*)/(.*))", [&](const httplib::Request& req, httplib::Response& res) {
+   	svr.Get(R"(/contact/update/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/(.*)/(.*))", [&](const httplib::Request& req, httplib::Response& res) {
     	res.set_header("Access-Control-Allow-Origin","*");
 
     	string ID = req.matches[1];
@@ -116,7 +125,13 @@ int main() {
     	string last = req.matches[3];
     	string phone = req.matches[4];
     	string type = req.matches[5];
-    	ctdb.editEntry(ID,first,last,phone,type);
+    	string email = req.matches[6];
+    	string SSN = req.matches[7];
+    	string meal = req.matches[8];
+    	string yakarma = req.matches[9];
+    	ctdb.editEntry(ID,first,last,phone,type,email,SSN,meal,yakarma);
+    	
+    	cout<<"in .../contact/update/..., values to be updated are ID:"<<ID<<", first:"<<first<<", last:"<<last<<", phone: "<<phone<<", type:"<<type<<", email:"<<email<<", SSN:"<<SSN<<", meal:"<<meal<<", yak:"<<yakarma<<endl;
 
     	res.set_content("{\"status\":\"success\"}", "text/json");
     	res.status = 200;

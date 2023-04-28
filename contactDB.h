@@ -34,8 +34,8 @@ public:
     vector<contactEntry> findByLast(string last);
     vector<contactEntry> findByType(string type);
     contactEntry fetchEntry(string id);
-    void addEntry(string first,string last,string phone,string type);
-    void editEntry(string idnum,string first,string last,string phone,string type);
+    void addEntry(string first,string last,string phone,string type,string email,string SSN,string meal,string yakarma);
+    void editEntry(string idnum,string first,string last,string phone,string type,string email,string SSN,string meal,string yakarma);
     void deleteEntry(string idnum);
 private:
     const string db_url=DB_URL;
