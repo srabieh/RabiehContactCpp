@@ -1,5 +1,5 @@
 # contactCpp
-A MarieDB C++ microservice baced web app to save phone numbers
+A MariaDB C++ microservice-based web app to save contact cards
 
 ## Running on my VM:
 http://34.229.136.9/contactCpp/contactApp.html
@@ -24,9 +24,10 @@ Database —
 
 ## Change the database credentials in contactDB.h:
 ```
-    #define DB_URL "jdbc:mariadb://localhost:3306/kenyon"
-    #define USER "kenyon"
-    #define PASS "GambierOwls"
+    #define DB_URL "jdbc:mariadb://localhost:3306/[database name]"```(NOT the table name w/i the database)
+    ```
+    #define USER "[phpMyAdmin username]"
+    #define PASS "[phpMyAdmin password]"
 ```
 ## Setup web directory
  - sudo mkdir /var/www/html/contactPy

@@ -156,14 +156,16 @@ vector<contactEntry> contactDB::findByType(string type) {
 }
 
 void contactDB::addEntry(string first,string last,string phone,string type,string email,string SSN,string meal,string yakarma){
-
+	cout<<"in addEntry, type is "<<type<<endl;
+	
 	if (!conn) {
    		cerr << "Invalid database connection" << endl;
    		exit (EXIT_FAILURE);
   	}
 
   	std::auto_ptr<sql::Statement> stmnt(conn->createStatement());
-
+  	
+  	
   	if (type != "Friend" && type != "Family" && type!="Business"){
      	 type="Other";
   	}

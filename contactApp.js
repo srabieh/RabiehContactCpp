@@ -89,12 +89,15 @@ function addContact() {
     console.log("Last:"+$('#addlast').val());
     console.log("Phone:"+$('#addphone').val());
     console.log("Type:"+$('#addtype').text());
+    //somehow, Type adds a single space.  removing it.
+    let addType = $('#addtype').text().trim();
+    console.log("addType is " + addType);
     console.log("Email:"+$('#addemail').val());
     console.log("SSN:"+$('#addSSN').val());
     console.log("MealPlan:"+$('#addmeal').val());
     console.log("Yakarma:"+$('#addyakarma').val());
     $('#searchresults').empty();
-    fetch(baseUrl + '/contact/add/' + $('#addfirst').val() + "/" + $('#addlast').val() + "/" + $('#addphone').val() + "/" + $('#addtype').text() + "/" + $('#addemail').val() + "/" + $('#addSSN').val() + "/" + $('#addmeal').val() + "/" + $('#addyakarma').val(), {
+    fetch(baseUrl + '/contact/add/' + $('#addfirst').val() + "/" + $('#addlast').val() + "/" + $('#addphone').val() + "/" + addType + "/" + $('#addemail').val() + "/" + $('#addSSN').val() + "/" + $('#addmeal').val() + "/" + $('#addyakarma').val(), {
             method: 'get'
         })
         .then(response => response.json())
