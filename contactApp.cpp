@@ -125,6 +125,10 @@ int main() {
     	string last = req.matches[3];
     	string phone = req.matches[4];
     	string type = req.matches[5];
+    	//somehow, Type adds a single space.  removing it.
+    	cout<<"type with(?) whitespaces: test"<<type<<"test\n";
+    	type.erase(type.length()-1);
+    	cout<<"type without(?) whitespaces: test"<<type<<"test\n";
     	string email = req.matches[6];
     	string SSN = req.matches[7];
     	string meal = req.matches[8];
